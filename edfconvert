@@ -1,0 +1,12 @@
+#!/bin/bash
+
+EXPERIMENT=day2-exp1
+echo "Converting data files to EDF format"
+
+for fname in *.SMP
+do
+  echo "Processing $f file..."
+  REC="${fname%%.*}"     # strip extension
+  tms_rd -i $fname -A ECG -E RESP -G GSR -H LIGHT -o $EXPERIMENT-$REC
+  #echo "Processing $REC"
+done

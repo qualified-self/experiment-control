@@ -1,0 +1,9 @@
+denissen/
+
+*.pyc
+*.tar.gz
+*.gz
+*.tgz
+
+*.o
+

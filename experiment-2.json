@@ -1,0 +1,31 @@
+{
+	"destination-host" : "10.57.65.97",
+	"destination-port" : 12345,
+	"are-hosts-remote" : true,
+	"boxes" : [
+		{
+			"id" : "chair1",
+			"mac" : "00:A0:96:1B:48:15",
+			"host" : "127.0.0.1",
+			"port" : "16001",
+			"channels" : {
+				"A" : "ECG",
+				"E" : "RESP",
+				"G" : "GSR",
+				"H" : "LIGHT"
+			}
+		},
+		{
+			"id" : "chair2",
+			"mac" : "00:A0:96:1B:49:21",
+			"host" : "127.0.0.1",
+			"port" : "16002",
+			"channels" : {
+				"A" : "ECG",
+				"E" : "RESP",
+				"G" : "GSR",
+				"H" : "LIGHT"
+			}
+		}
+	]
+}

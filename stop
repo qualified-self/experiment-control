@@ -1,0 +1,7 @@
+#!/bin/bash
+
+PROCESS_NAME=tmsi_server
+
+echo "Stopping experiment..."
+killall -s SIGINT $PROCESS_NAME
+ 

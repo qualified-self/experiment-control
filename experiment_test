@@ -1,0 +1,33 @@
+#!/bin/bash
+
+EXPERIMENT=day1-exp2
+CHANNELS=AEGH
+
+TMSI_HOME=denissen/nexus/
+HOLST_HOME=holst/pyholst/
+echo Starting experiment $EXPERIMENT...
+echo
+
+# 00:A0:96:16:17:57 no BT always on support
+
+##echo Synchronizing clocks in all devices (gotta see Ad do this, still not clear to me how it works)
+##./tmsi_clock -a 00:A0:96:16:17:57
+##./tmsi_clock -a 00:A0:96:1B:48:15
+##./tmsi_clock -a 00:A0:96:1B:41:92
+
+echo Starting NEXUS sensor logging for experiment $EXPERIMENT...
+echo
+
+# ./tmsi_server -a 00:A0:96:1B:48:15 -c AEGH -A ECG -E RESP -G GSR -H LIGHT -s 3 -port 16001 -id exp0-chair1
+$TMSI_HOME/tmsi_server -a 00:A0:96:1B:48:15 -c $CHANNELS -A ECG -E RESP -G GSR -H LIGHT -s 3 -port 16001 -id $EXPERIMENT-chair1 &
+$TMSI_HOME/tmsi_server -a 00:A0:96:1B:49:21 -c $CHANNELS -A ECG -E RESP -G GSR -H LIGHT -s 3 -port 16002  -id $EXPERIMENT-chair2 &
+$TMSI_HOME/tmsi_server -a 00:A0:96:1B:49:58 -c $CHANNELS -A ECG -E RESP -G GSR -H LIGHT -s 3 -port 16003  -id $EXPERIMENT-chair3 &
+$TMSI_HOME/tmsi_server -a 00:A0:96:31:9F:85 -c $CHANNELS -A ECG -E RESP -G GSR -H LIGHT -s 3 -port 16004  -id $EXPERIMENT-chair4 &
+$TMSI_HOME/tmsi_server -a 00:A0:96:1B:48:85 -c $CHANNELS -A ECG -E RESP -G GSR -H LIGHT -s 3 -port 16005  -id $EXPERIMENT-chair5 &
+
+#echo Starting sensor logging for experiment $EXPERIMENT...
+#echo
+#
+#python $HOLST_HOME/holstparser.py -s /dev/ttyUSB0 -f $EXPERIMENT -l &
+#
+#python experiment.py

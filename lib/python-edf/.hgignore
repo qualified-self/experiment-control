@@ -1,0 +1,7 @@
+syntax: glob
+build/*
+*.o
+*.pyc
+*~
+attic*
+python_edf.egg-info*

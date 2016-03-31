@@ -1,0 +1,50 @@
+Python tools for feedback experiments with biometric sensors.
+(cc) 2014 Luis Rodil-Fernandez <root@derfunke.net>
+
+## Introduction
+
+Set of python scripts to deal with real-time data coming from Nexus and HOLST biometric sensors. See libnexus and libholst respectively.
+
+The experiment.py takes care of starting the external processes, monitoring them parsing the data coming from them and translating into a real-time stream in OSC (Open Sound Control) format. OSC is a UDP protocol that is widely used in the media arts and music technology for its low latency and simplicity.
+
+The software only cares about parsing incoming data and repackaging it for use in realtime "stage systems", like MAX or PureData that drive actuators.
+
+## Systems
+
+The experimental system is composed of data gathering nodes, these nodes might be sensor boxes that can do radio transmission or IP-capable computers connected to sensorboxes. All systems communicate over a closed WiFi network for convenience. Another node (although not necessarily limited to one) receives all this data and closes the feedback loop by communicating with the actuators, in this case the stage systems or the HUE bulbs.
+
+## Installation
+
+Python dependencies *not* provided with this package:
+
+psutil
+twisted
+txosc
+pyOSC
+
+to install them make sure you have python installed in your system and run:
+
+$ sudo pip install <dependency name>
+
+## Contents
+
+denissen/     contains the toolkit provided by Ad Denissen including the
+              tmsi_server and tools to process EDF data.
+day*/         contains data of the experiments performed during the residence
+holst/        contains the code of the HOLST message broker
+libs/         contains dependencies
+tests/        simple test scripts - ignore, for dev purposes only
+README        this file
+experiment    shell script that was used on the first day to run the experiments,
+              doesn't do process control.
+experiment.json this is the experiment definition file, the sensorbox
+                configuration is here as well as the IPs to the machines that form the feedback system.
+libholst.py   library to parse HOLST sensor data in realtime and transform it to OSC
+libnexus.py   library to spawn tmsi_server processes and monitor them
+tw.py         try-out code with the twisted framework
+
+## Data format conversion
+
+```
+./tms_rd -i ~/Desktop/S5000000.SMP
+```
